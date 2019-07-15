@@ -5,14 +5,14 @@ import numpy
 import setSegment
 from time import sleep
 
-for num in range(1,10):
+for num in range(1,3):
 	#Create a memory stream so photos doesn't need to be saved in a file
 	stream = io.BytesIO()
 
 	#Get the picture (low resolution, so it should be quite fast)
 	#Here you can also specify other parameters (e.g.:rotate the image)
 	with picamera.PiCamera() as camera:
-    		camera.resolution = (320, 240)
+    		camera.resolution = (1280,720)
     		camera.capture(stream, format='jpeg')
 
 	#Convert the picture into a numpy array
@@ -40,4 +40,4 @@ for num in range(1,10):
 	cv2.imwrite('result.jpg',image)
 
 	setSegment.setDisplay(len(faces))
-	sleep(10)
+	sleep(1)
